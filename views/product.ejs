@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href="../css/product.css">
+  	<script src='https://kit.fontawesome.com/6a043764e1.js' crossorigin="anonymous"></script> 
+</head>
+<body>
+    <nav>
+      <div id='navTop-section'>
+        <div id='logo-section' class='nav-section'>
+          <a href='/'>logo</a> </div> <div id='shop-section' class='nav-section'>
+          <a href='shop'>Shop</a>
+        </div>
+        <div id='contact-section' class='nav-section'>
+          Contact
+        </div>
+        <div id='setting-section' class='nav-section'>
+          <i class='fa-solid fa-bars'></i>
+        </div>
+      </div>
+      <div id='navBottom-section'>
+        <div id='cart-section' class='nav-section'>
+          <i class='fa-solid fa-cart-shopping'></i>
+        </div>
+        <div id='search-section' class='nav-section'>
+          <input type='text' id='search-text' placeholder='Search'> 
+        </div>
+        <div id='mag-section' class='nav-section'>
+          <i class='fa-solid fa-magnifying-glass'></i>
+        </div>
+      </div>
+      </nav>
+      <div class="product_placement">
+        <div class="slideshow-container">
+          <img src="images/2.jpg" class="slides fade" id="product-image">
+          <img src="images/3.jpg" class="slides fade" id="product-image">
+          <img src="images/4.jpg" class="slides fade" id="product-image">
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <div id="product_info">
+          <h2><%= product[0].type %></h2>
+          <h4 style="display: inline">Price: Rs.<%= product[0].price %></h4>
+          <h4 style="display: inline">Age: <%= product[0].min_age %>-<%= product[0].max_age %></h4>
+          <!--<h4 style="display: inline"><%= product[0].collection %> Collection</h4>-->
+          <h4>Colour: <%= product[0].colour %></h4>
+          <h4>Unit: <%= product[0].quantity %></h4>
+          <input type="text" name="quantity" placeholder="1">
+        </div>
+        <br>
+        <div id="product_submit">
+          <button type="submit" id="ADD">Add To Cart</button>
+          <button type="submit" id="BUY">Buy Now</button>
+        </div>
+      </div>
+    <script src='js/Product.js'></script>
+</body>
+</html>

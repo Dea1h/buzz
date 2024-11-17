@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+:root {
+	--nav_background-color: rgba(36,36,35,1);
+	--background-color: rgba(126,114,84,1);
+	--highlight-color: rgba();
+	--border-color: rgba(250,250,250,0.2)
+
+}
+
+* {
+	box-sizing: border-box;
+ }
+
+body {
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+	font-family: "Sen", sans-serif;
+}
+
+nav {
+	background-color: var(--nav_background-color);
+	display: flex;
+	width: 100%;	
+	border-bottom: 1px solid var(--border-color);
+}
+
+nav > .nav_section {
+	padding: 1rem 2rem;
+	display: flex;
+	gap: 4rem;
+	border-left: 1px solid var(--border-color);
+
+	align-items: center;
+	justify-content: center;
+}
+
+
+nav > .nav_section > a {
+	text-decoration: none;
+	font-family: "Sen", sans-serif;
+	margin: 0px;
+	color: white;
+}
+
+nav > .nav_section > i {
+	color: white;
+}
+
+nav > .nav_section > i:hover {
+	color: var(--highlight-color);
+}
+
+nav > .nav_section > a:hover {
+	color: var(--highlight-color);
+}
+
+
+#logo_section, #search_section {
+	flex-basis: calc(100%/2.5);
+}
+
+#cart_section, #account_section {
+	flex-grow: 1;
+}
+
+#logo_section {
+	justify-content: flex-start;
+}
+
+#search_section > i {
+	margin-right: 5rem;
+}
+
+#display-section > h2 {
+	margin-top: 50px;
+	margin-left: 300px;
+	border-bottom: 2px solid var(--nav_background-color);
+	width: 700px;
+}
+
+#cart-section {
+	display: flex;
+	gap: 5rem;
+}
+
+#order {
+	margin-top: 30px;
+}
+
+#order > h2 {
+	border-bottom: 2px solid var(--nav_background-color);
+	width: 250px;
+}
+
+#order > button {
+	width: 150px;
+	height: 40px;
+	font-size: 15px;
+	background-color: var(--nav_background-color);
+	color: white;
+}
+
+#order > button:hover {
+	color: green;
+}

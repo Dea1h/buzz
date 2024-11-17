@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='../css/shop.css'>
+  	<script src='https://kit.fontawesome.com/6a043764e1.js' crossorigin='anonymous'></script> 
+  </head>
+  <body>
+    <nav>
+      <div id='navTop-section'>
+        <div id='logo-section' class='nav-section'>
+          <a href='/'>Logo</a>
+        </div>
+        <div id='shop-section' class='nav-section'>
+          <a href='shop'>Shop</a>
+        </div>
+        <div id='contact-section' class='nav-section'>
+          <a href='contact'>Contact</a>
+        </div>
+        <div id='setting-section' class='nav-section'>
+          <i class='fa-solid fa-bars'></i>
+        </div>
+      </div>
+      <div id='navBottom-section'>
+        <div id='cart-section' class='nav-section'>
+          <a href='cart'><i class='fa-solid fa-cart-shopping'></i></a>
+        </div>
+        <div id='search-section' class='nav-section'>
+          <input type='text' id='search-text' placeholder='Search'> 
+        </div>
+        <div id='mag-section' class='nav-section'>
+          <i class='fa-solid fa-magnifying-glass'></i>
+        </div>
+      </div>
+      </nav>
+      <button onclick='on()' id='on-button'>Filter By&nbsp<i class='fa-solid fa-bars-staggered'></i></button>
+      <div id='overlay'>
+        <button onclick='off()'id='off-button'><i class='fa-solid fa-arrow-left'></i></button>
+        <form>
+          <div class='form'>
+            <label>Type</label>
+            <input type='text' id='type' placeholder='Type'>
+            <label>Colour</label>
+            <select id='colour' name='colour'>
+              <option value=''>--Select an Option--</option>
+              <option value='black'>Black</option>
+              <option value='white'>White</option>
+              <option value='blue'>Blue</option>
+              <option value='red'>Red</option>
+              <option value='yellow'>Yellow</option>
+              <option value='green'>Green</option>
+            </select>
+            <label>Age</label>
+            <div class='age-slider'>
+              <span class='age-fill' id='age-fill'>0 - 18</span><br>
+              <input type='range'  value='18' min='0' max='18' id='max-age' step='1'/>
+              <input type='range'  value='0' min='0' max='18' id='min-age' step='1'/>
+            </div>
+            <label>Price</label>
+            <div class='price-slider'>
+              <span class='price-fill' id='price-fill'>Rs 0 - Rs 5000</span><br>
+              <input type='range'  value='5000' min='0' max='5000' id='max-price' step='25'/> 
+              <input type='range'  value='0' min='0' max='5000' id='min-price' step='25'/> 
+            </div>
+            <label>Collection</label>
+            <select id='collection'>
+              <option value=''>--Select an Option--</option>
+              <option value='Spring'>Spring</option>
+              <option value='summer'>Summer</option>
+              <option value='Autumn'>Autumn</option>
+              <option value='Winter'>Winter</option>
+            </select>
+            <input type='button' value='submit' onclick='postSearch(false)'>
+          </div>
+        </form>
+      </div>
+      <div id='image-container'></div>
+      <div id='loading'>Loading...</div>
+      <script src='../js/shop.js'></script>
+  </body>
+</html>
