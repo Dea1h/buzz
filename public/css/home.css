@@ -128,7 +128,7 @@ a {
 }
 
 .display-product {
-  width: auto;
+  width: 40vw;
   object-fit: cover;
   height: 30vh;
   margin-left: 0.5rem;

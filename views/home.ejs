@@ -39,39 +39,25 @@
     <h3>New Drops</h3>
     <div id="slideshow_container">
       <div class="group">
-        <a href="#"><img src="images/2.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/3.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/4.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/5.jpg" class="sliding-product"></a>
+        <% for(let i = 0;i < product.length && i < 5;i++) { %>
+        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product"></a>
+        <% } %>
       </div>
       <div class="group">
-        <a href="#"><img src="images/2.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/3.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/4.jpg" class="sliding-product"></a>
-        <a href="#"><img src="images/5.jpg" class="sliding-product"></a>
+        <% for(let i = 0;i < product.length && i < 5;i++) { %>
+        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product"></a>
+        <% } %>
       </div>
     </div> 
     <h3>Summer Collection</h3>
-    <div class="display">
-        <a href="#"><img src="images/2.jpg" class="display-product"></a>
-        <a href="#"><img src="images/3.jpg" class="display-product"></a>
-    </div>
-    <div class="display">
-        <a href="#"><img src="images/2.jpg" class="display-product"></a>
-        <a href="#"><img src="images/3.jpg" class="display-product"></a>
-    </div>
-    <div class="display">
-        <a href="#"><img src="images/2.jpg" class="display-product"></a>
-        <a href="#"><img src="images/3.jpg" class="display-product"></a>
-    </div>
-    <div class="display">
-        <a href="#"><img src="images/2.jpg" class="display-product"></a>
-        <a href="#"><img src="images/3.jpg" class="display-product"></a>
-    </div>
-    <div class="display">
-        <a href="#"><img src="images/2.jpg" class="display-product"></a>
-        <a href="#"><img src="images/3.jpg" class="display-product"></a>
-    </div>
+    <% for(let i = 5;i < product.length;i += 2) { %>
+      <% if(product[i] && product[i+1]) { %>
+        <div class="display">
+          <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="display-product"></a>
+          <a href="/product?id=<%= product[i+1].model_image_id %>"><img src="images/<%= product[i+1].model_image_id %>" class="display-product"></a>
+        </div>
+      <% } %>
+    <% } %>
     <div id='footer'>
       <h3>Contact Us</h3>
       <h4>

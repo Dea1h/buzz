@@ -195,7 +195,6 @@ async function fetchData(database,fetchParameter,pool) {
                         `;
 
   try {
-    console.log(fetchParameter);
     await pool.query(`USE ${database};`);
     const [rows,fields] = await pool.query(whereClause,[
       fetchParameter.type,
@@ -251,14 +250,9 @@ function endpoints(express,pool,upload,database) {
   const endpoint = express.Router();
 
   endpoint.get('/',async (request,response) => {
-    //const parameter = new Parameter({ priority: 0});
-    //fetchData('node',pool,parameter).then(images=> {
-    //response.render('home',{images: images});
-    //});
     const parameter = new fetchParameter({priority: 0});
     const productData = await fetchData(database,parameter,pool);
-    console.log(productData);
-    response.render('home');
+    response.render('home',{product:productData});
   });
 
   endpoint.get('/shop',(request,response) => {
@@ -281,7 +275,6 @@ function endpoints(express,pool,upload,database) {
       image_id = "NOT FOUND";
     }
     let productData = await subQuery(database,pool,image_id);
-    console.log(productData);
     response.render('product', {product: productData});
   });
 
