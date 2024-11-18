@@ -1,5 +1,3 @@
-//https://arun.stores.com/product?id=akhgkjahkgkuag
-
 async function initializeDatabase(database,pool) {
   try {
     const [rows] = await pool.query(`SHOW DATABASES LIKE '${database}';`);
@@ -179,8 +177,7 @@ async function fetchData(database,fetchParameter,pool) {
   const whereClause = ` 
                       SELECT 
                           p.type, p.price, p.min_age, p.max_age, p.collection, 
-                          pv.model_image_id, pv.colour, pv.design, pv.quantity,
-                          pv.size
+                          pv.model_image_id, pv.colour, pv.design, pv.quantity
                       FROM 
                           products p
                       JOIN 
@@ -198,17 +195,18 @@ async function fetchData(database,fetchParameter,pool) {
                         `;
 
   try {
+    console.log(fetchParameter);
     await pool.query(`USE ${database};`);
     const [rows,fields] = await pool.query(whereClause,[
-      fetchParameter.type || null,
-      fetchParameter.max_price || null,
-      fetchParameter.min_price || null,
-      fetchParameter.min_age || null,
-      fetchParameter.max_age || null,
-      fetchParameter.collection || null,
-      fetchParameter.priority || null,
-      fetchParameter.image_Id || null,
-      fetchParameter.colour || null,
+      fetchParameter.type,
+      fetchParameter.max_price,
+      fetchParameter.min_price,
+      fetchParameter.min_age,
+      fetchParameter.max_age,
+      fetchParameter.collection,
+      fetchParameter.priority,
+      fetchParameter.image_Id,
+      fetchParameter.colour,
     ]);
     return rows;
   } catch (error) {
@@ -258,9 +256,9 @@ function endpoints(express,pool,upload,database) {
     //response.render('home',{images: images});
     //});
     const parameter = new fetchParameter({priority: 0});
-    const productData = await fetchData(database,pool,parameter);
+    const productData = await fetchData(database,parameter,pool);
     console.log(productData);
-    response.render('home',{product: productData});
+    response.render('home');
   });
 
   endpoint.get('/shop',(request,response) => {
@@ -325,7 +323,7 @@ function endpoints(express,pool,upload,database) {
   app.set('views','/home/neon/buzz/views');
 
   app.use(express.static('/home/neon/buzz/public'));
-  const endpoint = endpoints(express,pool,upload);
+  const endpoint = endpoints(express,pool,upload,database);
   app.use('/',endpoint);
 
   app.listen(8080, () => {
