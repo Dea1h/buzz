@@ -255,8 +255,10 @@ function endpoints(express,pool,upload,database) {
     response.render('home',{product:productData});
   });
 
-  endpoint.get('/shop',(request,response) => {
-    response.render('shop');
+  endpoint.get('/shop',async (request,response) => {
+    const parameter = new fetchParameter({priority: 0});
+    const productData = await fetchData(database,parameter,pool);
+    response.render('shop',{product:productData});
   });
 
   endpoint.get('/contact',(request,response) => {

@@ -26,7 +26,7 @@
       </div>
       <div id='navBottom-section'>
         <div id='cart-section' class='nav-section'>
-          <i class='fa-solid fa-cart-shopping'></i>
+          <a href='cart'><i class='fa-solid fa-cart-shopping'></i></a>
         </div>
         <div id='search-section' class='nav-section'>
           <input type='text' id='search-text' placeholder='Search'> 
@@ -40,12 +40,12 @@
     <div id="slideshow_container">
       <div class="group">
         <% for(let i = 0;i < product.length && i < 5;i++) { %>
-        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product"></a>
+        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product" ></a>
         <% } %>
       </div>
       <div class="group">
         <% for(let i = 0;i < product.length && i < 5;i++) { %>
-        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product"></a>
+        <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="sliding-product" ></a>
         <% } %>
       </div>
     </div> 
@@ -53,8 +53,8 @@
     <% for(let i = 5;i < product.length;i += 2) { %>
       <% if(product[i] && product[i+1]) { %>
         <div class="display">
-          <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="display-product"></a>
-          <a href="/product?id=<%= product[i+1].model_image_id %>"><img src="images/<%= product[i+1].model_image_id %>" class="display-product"></a>
+          <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="display-product" loading="lazy"></a>
+          <a href="/product?id=<%= product[i+1].model_image_id %>"><img src="images/<%= product[i+1].model_image_id %>" class="display-product" loading="lazy"></a>
         </div>
       <% } %>
     <% } %>

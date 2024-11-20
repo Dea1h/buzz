@@ -76,7 +76,16 @@
           </div>
         </form>
       </div>
-      <div id='image-container'></div>
+      <div id='image-container'>
+        <% for(let i = 5;i < product.length;i += 2) { %>
+        <% if(product[i] && product[i+1]) { %>
+        <div class="display">
+          <a href="/product?id=<%= product[i].model_image_id %>"><img src="images/<%= product[i].model_image_id %>" class="display-product" loading="lazy"></a>
+          <a href="/product?id=<%= product[i+1].model_image_id %>"><img src="images/<%= product[i+1].model_image_id %>" class="display-product" loading="lazy"></a>
+        </div>
+        <% } %>
+        <% } %>
+      </div>
       <div id='loading'>Loading...</div>
       <script src='../js/shop.js'></script>
   </body>
