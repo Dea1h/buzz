@@ -107,6 +107,7 @@ a {
   object-fit: cover;
   height: 20vh;
   width: auto;
+  border: 2px solid black;
 }
 
 .group {
@@ -134,4 +135,5 @@ a {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+  border: 2px solid black;
 }
