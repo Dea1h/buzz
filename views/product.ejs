@@ -11,7 +11,9 @@
     <nav>
       <div id='navTop-section'>
         <div id='logo-section' class='nav-section'>
-          <a href='/'>logo</a> </div> <div id='shop-section' class='nav-section'>
+          <a href='/'>logo</a> 
+        </div> 
+        <div id='shop-section' class='nav-section'>
           <a href='shop'>Shop</a>
         </div>
         <div id='contact-section' class='nav-section'>
@@ -23,7 +25,7 @@
       </div>
       <div id='navBottom-section'>
         <div id='cart-section' class='nav-section'>
-          <i class='fa-solid fa-cart-shopping'></i>
+          <a href="cart"><i class='fa-solid fa-cart-shopping'></i></a>
         </div>
         <div id='search-section' class='nav-section'>
           <input type='text' id='search-text' placeholder='Search'> 
@@ -35,17 +37,17 @@
       </nav>
       <div class="product_placement">
         <div class="slideshow-container">
-          <img src="images/2.jpg" class="slides fade" id="product-image">
-          <img src="images/3.jpg" class="slides fade" id="product-image">
-          <img src="images/4.jpg" class="slides fade" id="product-image">
+          <% for(let i = 0; i < product.length;i++) { %>
+          <img src="images/<%= product[i].model_image_id %>" class="slides fade" id="product-image">
+          <% } %>
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
         <div style="text-align:center">
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-          <span class="dot" onclick="currentSlide(3)"></span>
+          <% for(let i = 0;i < product.length;i++) { %>
+          <span class="dot" onclick="currentSlide(<% i %>)"></span>
+          <% } %>
         </div>
         <div id="product_info">
           <h2><%= product[0].type %></h2>
@@ -54,12 +56,12 @@
           <!--<h4 style="display: inline"><%= product[0].collection %> Collection</h4>-->
           <h4>Colour: <%= product[0].colour %></h4>
           <h4>Unit: <%= product[0].quantity %></h4>
-          <input type="text" name="quantity" placeholder="1">
+          <input type="text" name="quantity" placeholder="1" id="quantity-input">
         </div>
         <br>
         <div id="product_submit">
-          <button type="submit" id="ADD">Add To Cart</button>
-          <button type="submit" id="BUY">Buy Now</button>
+          <button type="submit" id="ADD" onclick="addList('2.jpg',document.getElementById('quantity-input').value)">Add To Cart</button>
+          <button type="submit" id="BUY" onclick="window.location.href='cart';">Buy Now</button>
         </div>
       </div>
     <script src='js/Product.js'></script>

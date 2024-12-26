@@ -283,6 +283,20 @@ function endpoints(express,pool,upload,database) {
   endpoint.get('/admin',(request,response) => {
     response.render('admin');
   });
+
+  endpoint.post('/api/getproductdata',async (request,response) => {
+    let imageList = request.body.imageList;
+    let images = imageList.map(item => item.image_id);
+    let i = 0;
+    let image_info = [];
+    console.log(images.length);
+    while(i < images.length) {
+      image_info[i] = await subQuery(database,pool,images[i]);
+      i++;
+    }
+    console.log(image_info);
+    response.sendStatus(200);
+  })
   return endpoint;
 }
 
@@ -318,6 +332,7 @@ function endpoints(express,pool,upload,database) {
   app.set('views','/home/neon/buzz/views');
 
   app.use(express.static('/home/neon/buzz/public'));
+  app.use(express.json());
   const endpoint = endpoints(express,pool,upload,database);
   app.use('/',endpoint);
 

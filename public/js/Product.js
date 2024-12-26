@@ -26,3 +26,19 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+
+function getList() {
+  return JSON.parse(localStorage.getItem("image_id"));
+}
+
+function addList(image_id,quantity) {
+  let imageList = JSON.parse(localStorage.getItem("image_id")) || [];
+  imageList.push({
+    image_id,
+    quantity
+  });
+
+  localStorage.setItem("image_id",JSON.stringify(imageList));
+  console.log("ADDED" + image_id + "With quantity" + quantity);
+  console.log(JSON.parse(localStorage.getItem("image_id")));
+}
